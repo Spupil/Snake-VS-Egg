@@ -20,7 +20,7 @@ class snake():
         self.AddBody()
         self.AddBody()
 
-    def AddBody(self):
+    def AddBody(self):            #移动
         NewAddLeft, NewAddTop = (0, 0)
         if self.Body:
             NewAddLeft, NewAddTop = (self.Body[0].left, self.Body[0].top)
@@ -183,16 +183,16 @@ def GameMain():
     
         for rect in Snake.Body:
             pygame.draw.rect(Screen, (148,251,240), rect, 0)
-        for rect in Snake.Body[1]:
+        for rect in Snake.Body[1]:      
             pygame.draw.rect(Screen,(255,76,108),(Snake.Body[1].left,Snake.Body[1].top,20,20),0)
 
         if Snake.IsDie():
             return Score
-        if Food.Obj == Snake.Body[1]:
+        if Food.Obj == Snake.Body[1]:    #判断蛋是否碰到蛇的死穴
             return Life
      
         
-        if Food.Obj == Snake.Body[0]:
+        if Food.Obj == Snake.Body[0]:  #判断蛇是否吃到蛋
             Score += Difficulty
             Life +=1
             Food.Remove()
@@ -203,7 +203,7 @@ def GameMain():
         ScoreSurface = ScoreFont.render(str(Score), True, (0, 0, 0))
         Screen.blit(ScoreSurface, (0, 0))
         LifeSurface = LifeFont.render(str(Life), True, (0, 0, 0))
-        Screen.blit(LifeSurface, (480, 0))
+        Screen.blit(LifeSurface, (460, 0))
 
        
         pygame.display.update()
